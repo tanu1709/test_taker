@@ -7,7 +7,7 @@ class TestTakersController < ApplicationController
 
     config = YAML.load_file(config_file_path)
     datasource_file_path = config[0]['data_file'][0]['name'].join
-    datasource_complete_path = "Rails.public_path}/data_source/#{datasource_file_path}"
+    datasource_complete_path = "#{Rails.public_path}/data_source/#{datasource_file_path}"
 
     unless File.exist?(datasource_complete_path)
       raise 'wrong file name present in config file'
