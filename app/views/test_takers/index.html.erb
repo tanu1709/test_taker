@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSV Downloader</title>
+</head>
+<body>
+  <% headers = @records[0].keys %>
+  <h3>Test Takers Records</h3>
+
+  <div style="overflow-x:auto;">
+    <table border='1' class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <% headers.each do |key| %>
+              <th><%= key %></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody id="container">
+          <% if @records.count == 0 %>
+            <tr>
+              <td colspan="2">
+                No test takers found.
+              </td>
+            </tr>
+          <% else %>
+            <% @records.each do |category| %>
+              <tr>
+                <% headers.each do |header| %>
+                  <td><%= category[header] %>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <br />
+    <div style="text-align: center">
+      <%= paginate @records %>
+    </div>
+</body
